@@ -13,6 +13,20 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
     }
   ]);
 
+  //Array with the names of classes
+  $scope.vakken = [
+    "Engels",
+    "Nederlands",
+    "Rekenen",
+    "Project",
+    "Programmeren",
+    "Animatie",
+    "Databases",
+    "SLB",
+    "Burgerschap",
+    "Web"
+  ];
+
   // Simple hack to reload page.
   // Needed after login, need to fix.
   $scope.reloadPage = function(){

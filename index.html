@@ -25,6 +25,21 @@
     <nav>
       <div class="nav-wrapper z-depth-2">
         <a href="#!" class="brand-logo center">Workit</a>
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul id="slide-out" class="side-nav">
+            <li><div class="userView">
+              <div class="background">
+                <img src="img/sidenav_image.jpg">
+              </div>
+              <img class="responsive-img" src="http://i3.kym-cdn.com/photos/images/newsfeed/000/925/494/218.png_large" alt="">
+            </div></li>
+            <li><a href="#!"><i class="material-icons">search</i>Zoek Filters</a></li>
+            <li><div class="divider"></div></li>
+            <li ng-repeat="x in vakken">
+              <a href="#!">{{x}}</a>
+                <input type="checkbox">
+            </li>
+          </ul>
         <ul class="right">
           <li>
             <a ng-hide="loggedUser" class="waves-effect waves-light" href="#login">
@@ -47,7 +62,7 @@
           <nav class="searchBar">
             <div class="nav-wrapper">
               <div class="input-field">
-                <input id="search" type="search" ng-model="searchWork" required>
+                <input id="search" placeholder="Zoeken" type="search" ng-model="searchWork" required>
                 <label for="search"><i class="material-icons">search</i></label>
                 <i class="material-icons">close</i>
               </div>
@@ -58,10 +73,6 @@
             <div class="col s12 m5">
               <div class="card" ng-repeat="opdracht in opdrachten | orderBy:'datum':reverse | filter:searchWork">
                 <blockquote >
-                  <p class="left">
-                    <input type="checkbox" class="filled-in" id="filled-in-box" />
-                    <label for="filled-in-box"></label>
-                  </p>
                   <p><span class="new badge blue" data-badge-caption="{{ opdracht.datum | date:'longDate' }}"></span>{{ opdracht.omschrijving }}</p>
                   <hr>
                   <div class="chip">
@@ -125,6 +136,8 @@
                   <option value="Animatie">Animatie</option>
                   <option value="Web">Web</option>
                   <option value="Database">Database</option>
+                  <option value="Burger">Burger</option>
+                  <option value="Project">Project</option>
                 </select>
                 <label>Vak</label>
               </div>
