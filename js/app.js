@@ -1,5 +1,3 @@
-var d = new Date();
-
 var app = angular.module("workitApp", ["firebase"]);
 app.controller("workitCtrl", function($scope, $firebaseArray) {
   //Connect to database.
@@ -12,6 +10,8 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
       return $firebaseAuth();
     }
   ]);
+
+  $scope.getDatetime = new Date();
 
   //Array with the names of classes
   $scope.vakken = [
@@ -68,7 +68,7 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
       vak: $scope.vak,
       omschrijving: $scope.omschrijving,
       datum: $scope.datum,
-      created_at: d.getTime()
+      created_at: getDatetime.getTime()
     });
   };
 
