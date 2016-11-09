@@ -3,6 +3,16 @@ logs
 *.log
 npm-debug.log*
 
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
 # Runtime data
 pids
 *.pid
