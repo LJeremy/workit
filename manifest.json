@@ -1,4 +1,5 @@
 {
+  "short_name": "workit",
   "name": "workit",
   "icons": [
     {
@@ -39,6 +40,8 @@
     }
   ],
   "start_url": "index.html",
+  "background_color": "#3F51B5",
+  "theme_color": "#3F51B5",
   "display": "standalone",
   "orientation": "portrait"
 }
