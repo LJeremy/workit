@@ -58,7 +58,11 @@
             <div class="col s12 m5">
               <div class="card" ng-repeat="opdracht in opdrachten | orderBy:'datum':reverse | filter:searchWork">
                 <blockquote >
-                  <p><span class="new badge blue" data-badge-caption="{{ opdracht.datum }}"></span>{{ opdracht.omschrijving }}</p>
+                  <p class="left">
+                    <input type="checkbox" class="filled-in" id="filled-in-box" />
+                    <label for="filled-in-box"></label>
+                  </p>
+                  <p><span class="new badge blue" data-badge-caption="{{ opdracht.datum | date:'longDate' }}"></span>{{ opdracht.omschrijving }}</p>
                   <hr>
                   <div class="chip">
                     {{ opdracht.vak }}

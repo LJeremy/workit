@@ -1,3 +1,5 @@
+var d = new Date();
+
 var app = angular.module("workitApp", ["firebase"]);
 app.controller("workitCtrl", function($scope, $firebaseArray) {
   //Connect to database.
