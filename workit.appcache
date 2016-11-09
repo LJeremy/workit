@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# 2010-11-09:v1
+
+CACHE:
+
+# CSS
+css/materialize.css
+css/materialize.min.css
+https://fonts.googleapis.com/icon?family=Material+Icons
+
+# IMG
+img/banner_logo.png
+img/logo.png
+img/sidenav_image.jpg
+
+# JS
+js/materialize.js
+js/materialize.min.js
+https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js
+https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js
+https://www.gstatic.com/firebasejs/3.5.3/firebase.js
+https://cdn.firebase.com/libs/angularfire/2.1.0/angularfire.min.js
