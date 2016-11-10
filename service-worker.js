@@ -1,88 +1,69 @@
-// Set a name for the current cache
-var cacheName = 'v1.46';
+var CACHE_NAME = 'v0.1';
+// The files we want to cache
+var urlsToCache = [
+  './index.html',
+  './img/sidenav_image.jpg',
+  './js/materialize.min.js',
+  './css/materialize.min.css',
+  'https://fonts.googleapis.com/icon?family=Material+Icons',
+  './js/jquery.min.js',
+  './js/angular.min.js',
+  './js/angularfire.min.js',
+  './js/init.js',
+  './js/app.js'
+];
 
-// Default files to always cache
-var cacheFiles = [
-    './img',
-    './index.html',
-    './img/sidenav_image.jpg',
-    './js/materialize.min.js',
-    './css/materialize.min.css',
-    'https://fonts.googleapis.com/icon?family=Material+Icons',
-    './js/jquery.min.js',
-    './js/angular.min.js',
-    './js/angularfire.min.js',
-    './js/init.js',
-    './js/app.js'
-]
-
-
-self.addEventListener('install', function(e) {
-    console.log('[ServiceWorker] Installed');
-    // e.waitUntil Delays the event until the Promise is resolved
-    e.waitUntil(
-        // Open the cache
-        caches.open(cacheName).then(function(cache) {
-            // Add all the default files to the cache
-            console.log('[ServiceWorker] Caching cacheFiles');
-            return cache.addAll(cacheFiles);
-        })
-    ); // end e.waitUntil
+// Set the callback for the install step
+self.addEventListener('install', function(event) {
+    // Perform install steps
+    // event.waitUntil(
+    caches.open(CACHE_NAME)
+      .then(function(cache) {
+        console.log('Opened cache');
+        return cache.addAll(urlsToCache);
+      });
 });
 
+// Set the callback when the files get fetched
+self.addEventListener('fetch', function(event) {
+  event.respondWith(
+    caches.match(event.request)
+      .then(function(response) {
+        // Cached files available, return those
+        if (response) {
+          return response;
+        }
 
-self.addEventListener('activate', function(e) {
-    console.log('[ServiceWorker] Activated');
-    e.waitUntil(
-        // Get all the cache keys (cacheName)
-        caches.keys().then(function(cacheNames) {
-            return Promise.all(cacheNames.map(function(thisCacheName) {
-                // If a cached item is saved under a previous cacheName
-                if (thisCacheName !== cacheName) {
-                    // Delete that cached file
-                    console.log('[ServiceWorker] Removing Cached Files from Cache - ', thisCacheName);
-                    return caches.delete(thisCacheName);
-                }
-            }));
-        })
-    ); // end e.waitUntil
-});
+        // IMPORTANT: Clone the request. A request is a stream and
+        // can only be consumed once. Since we are consuming this
+        // once by cache and once by the browser for fetch, we need
+        // to clone the response
+        var fetchRequest = event.request.clone();
 
+        // Start request again since there are no files in the cache
+        return fetch(fetchRequest).then(
+          function(response) {
+            // If response is invalid, throw error
+            if(!response || response.status !== 200 || response.type !== 'basic') {
+              return response;
+            }
 
-self.addEventListener('fetch', function(e) {
-    console.log('[ServiceWorker] Fetch', e.request.url);
-    // e.respondWidth Responds to the fetch event
-    e.respondWith(
-        // Check in cache for the request being made
-        caches.match(e.request)
-            .then(function(response) {
-                // If the request is in the cache
-                if (response) {
-                    //console.log("[ServiceWorker] Found in Cache", e.request.url, response);
-                    // Return the cached version
-                    return response;
-                }
-                // If the request is NOT in the cache, fetch and cache
-                var requestClone = e.request.clone();
-                fetch(requestClone)
-                    .then(function(response) {
-                        if (!response) {
-                            console.log("[ServiceWorker] No response from fetch ")
-                            return response;
-                        }
-                        var responseClone = response.clone();
-                        //  Open the cache
-                        caches.open(cacheName).then(function(cache) {
-                            // Put the fetched response in the cache
-                            cache.put(e.request, responseClone);
-                            console.log('[ServiceWorker] New Data Cached', e.request.url);
-                            // Return the response
-                            return response;
-                        }); // end caches.open
-                    })
-                    .catch(function(err) {
-                        console.log('[ServiceWorker] Error Fetching & Caching New Data', err);
-                    });
-            }) // end caches.match(e.request)
-    ); // end e.respondWith
+            // IMPORTANT: Clone the response. A response is a stream
+            // and because we want the browser to consume the response
+            // as well as the cache consuming the response, we need
+            // to clone it so we have 2 stream.
+            var responseToCache = response.clone();
+
+            // Otherwise cache the downloaded files
+            caches.open(CACHE_NAME)
+              .then(function(cache) {
+                cache.put(event.request, responseToCache);
+              });
+
+            // And return the network response
+            return response;
+          }
+        );
+      })
+    );
 });
