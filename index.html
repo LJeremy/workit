@@ -122,26 +122,15 @@
         </div>
       </div>
 
-      <div id="addWork" class="modal bottom-sheet">
+      <div id="addWork" class="modal">
         <div class="modal-content">
           <form ng-submit="addTask()">
             <div class="row">
               <div class="input-field col s12">
-                <select ng-model="vak">
-                  <option value="" disabled selected>Kies het vak</option>
-                  <option value="Nederlands">Nederlands</option>
-                  <option value="Engels">Engels</option>
-                  <option value="Rekenen">Rekenen</option>
-                  <option value="SLB">SLB</option>
-                  <option value="KD OGD">KD OGD</option>
-                  <option value="Programmeren">Programmeren</option>
-                  <option value="Animatie">Animatie</option>
-                  <option value="Web">Web</option>
-                  <option value="Database">Database</option>
-                  <option value="Burger">Burger</option>
-                  <option value="Project">Project</option>
+                <select class="browser-default" ng-model="vak">
+                  <option value="" disabled selected>Kies het vak.</option>
+                  <option ng-repeat="x in vakken" value="{{ x }}">{{ x }}</option>
                 </select>
-                <label>Vak</label>
               </div>
               <div class="input-field col s12 m12 l12">
                 <input ng-model="omschrijving" id="omschrijving" type="text" class="validate">
