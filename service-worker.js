@@ -1,3 +1,4 @@
+// Cache version
 var CACHE_NAME = 'v0.1';
 // The files we want to cache
 var urlsToCache = [

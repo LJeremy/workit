@@ -5,13 +5,15 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
   // Create synced array
   $scope.opdrachten = $firebaseArray(ref);
 
+  // Add auth
   app.factory("Auth", ["$firebaseAuth",
     function($firebaseAuth) {
       return $firebaseAuth();
     }
   ]);
 
-  $scope.getDatetime = new Date();
+// Date
+  var d = new Date();
 
   //Array with the names of classes
   $scope.vakken = [
@@ -24,7 +26,8 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
     "Databases",
     "SLB",
     "Burgerschap",
-    "Web"
+    "Web",
+    "KD OGD"
   ];
 
   $scope.login = function () {
@@ -64,8 +67,9 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
       vak: $scope.vak,
       omschrijving: $scope.omschrijving,
       datum: $scope.datum,
-      created_at: getDatetime.getTime()
+      created_at: d.getTime()
     });
+    $('#addWork').modal('close');
   };
 
 });

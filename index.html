@@ -41,6 +41,8 @@
             <li ng-click="searchFilter" ng-repeat="x in vakken">
               <a href="#!">{{x}}</a>
             </li>
+            <li><div class="divider"></div></li>
+            <li><a href="https://github.com/LJeremy/workit"><i class="material-icons">code</i>View code on Github</a></li>
           </ul>
         <ul class="right">
           <li>
@@ -84,8 +86,8 @@
               </div>
             </div>
           </div><!-- END ROW -->
-        </div>
-      </div>
+        </div><!-- END col l12 m12 s12 -->
+      </div><!-- END ROW -->
 
       <div ng-show="loggedUser" class="fixed-action-btn click-to-toggle">
         <a href="#addWork" class="btn-floating btn-large waves-effect waves-light blue">
@@ -93,7 +95,7 @@
         </a>
       </div> <!-- END FAB -->
 
-      <!-- Modal Structure -->
+      <!-- Login Structure -->
       <div id="login" class="modal">
         <div class="modal-content">
           <h4>Login</h4>
@@ -122,6 +124,7 @@
         </div>
       </div>
 
+      <!-- addWork Modal -->
       <div id="addWork" class="modal">
         <div class="modal-content">
           <form ng-submit="addTask()">
@@ -147,7 +150,8 @@
              </div>
           </form>
         </div>
-      </div> <!-- END MODAL -->
+      </div>
+    </div><!-- END MODAL -->
 
     </div> <!-- Container -->
 
@@ -171,6 +175,7 @@
     </script>
     <!-- AngularFire -->
     <script src="js/angularfire.min.js"></script>
+    <!-- Scripts -->
     <script src="js/init.js"></script>
     <script src="js/app.js"></script>
   </body>
