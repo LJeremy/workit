@@ -38,7 +38,7 @@
             </div></li>
             <li><a href="#!"><i class="material-icons">search</i>Zoek Filters</a></li>
             <li><div class="divider"></div></li>
-            <li ng-repeat="x in vakken">
+            <li ng-click="searchFilter" ng-repeat="x in vakken">
               <a href="#!">{{x}}</a>
             </li>
           </ul>
@@ -49,7 +49,7 @@
             </a>
           </li>
           <li>
-            <a ng-show="loggedUser" ng-click="signOut();reloadPage()" class="waves-effect waves-light">
+            <a ng-show="loggedUser" ng-click="signOut()" class="waves-effect waves-light">
               <i class="large material-icons">input</i>
             </a>
           </li>
@@ -73,7 +73,7 @@
 
           <div class="row">
             <div class="col s12 m5">
-              <div class="card" ng-repeat="opdracht in opdrachten | orderBy:'datum':reverse | filter:searchWork">
+              <div class="card" ng-repeat="opdracht in opdrachten | orderBy:'datum':reverse | filter:searchWork | filter:searchFilter">
                 <blockquote >
                   <p><span class="new badge blue" data-badge-caption="{{ opdracht.datum | date:'longDate' }}"></span>{{ opdracht.omschrijving }}</p>
                   <hr>
@@ -118,7 +118,7 @@
           <p class="flow-text center">
               Made with 💙 by Lars
           </p>
-          <a ng-click="reloadPage()" class=" modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
+          <a class=" modal-action modal-close waves-effect waves-green btn-flat">Sluiten</a>
         </div>
       </div>
 

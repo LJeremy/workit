@@ -27,18 +27,13 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
     "Web"
   ];
 
-  // Simple hack to reload page.
-  // Needed after login, need to fix.
-  $scope.reloadPage = function(){
-    location.reload();
-  };
-
   $scope.login = function () {
     // Sign in with email.
        firebase.auth().signInWithEmailAndPassword($scope.user.email, $scope.user.password)
          .then(function (response) {
            $scope.userEmail = response.email;
-           alert('Logged in.');
+           $('#login').modal('close');
+           location.reload();
          }).catch(function (error) {
          // Handle Errors here.
          $scope.error = error;
@@ -50,6 +45,7 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
       console.log("Sign-out succesful.");
+      location.reload();
       $scope.loggedIn = false;
     }, function(error) {
       console.log(error);
