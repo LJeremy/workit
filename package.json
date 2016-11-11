@@ -1,0 +1,25 @@
+{
+  "name": "workit",
+  "version": "0.0.1",
+  "description": "homework app",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/LJeremy/workit.git"
+  },
+  "author": "Lars",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LJeremy/workit/issues"
+  },
+  "homepage": "https://github.com/LJeremy/workit",
+  "devDependencies": {
+    "gulp": "~3.9.1",
+    "gulp-uglify": "~2.0.0",
+    "gulp-concat": "~2.6.0",
+    "gulp-connect": "~5.0.0"
+  }
+}

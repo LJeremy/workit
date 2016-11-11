@@ -1,5 +1,4 @@
 //Add Service Worker
-
 if ('serviceWorker' in navigator) {
 
   navigator.serviceWorker
@@ -12,6 +11,16 @@ if ('serviceWorker' in navigator) {
     })
 
 }
+
+// Initialize Firebase
+var config = {
+  apiKey: "AIzaSyCF0nadq1Bzpgj-0L6vJgLLSGRtGPxNT7E",
+  authDomain: "workit-c5685.firebaseapp.com",
+  databaseURL: "https://workit-c5685.firebaseio.com",
+  storageBucket: "workit-c5685.appspot.com",
+  messagingSenderId: "52768683309"
+};
+firebase.initializeApp(config);
 
 //Materialize init.
 $('.modal').modal({

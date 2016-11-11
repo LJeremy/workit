@@ -1,17 +1,13 @@
 // Cache version
-var CACHE_NAME = 'v0.1';
+var CACHE_NAME = 'v0.4';
 // The files we want to cache
 var urlsToCache = [
   './index.html',
   './img/sidenav_image.jpg',
-  './js/materialize.min.js',
   './css/materialize.min.css',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
-  './js/jquery.min.js',
-  './js/angular.min.js',
-  './js/angularfire.min.js',
-  './js/init.js',
-  './js/app.js'
+  './dist/app.min.js',
+  './dist/libs.min.js'
 ];
 
 // Set the callback for the install step

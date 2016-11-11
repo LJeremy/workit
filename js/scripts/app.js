@@ -1,5 +1,5 @@
 var app = angular.module("workitApp", ["firebase"]);
-app.controller("workitCtrl", function($scope, $firebaseArray) {
+app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $firebaseArray) {
   //Connect to database.
   var ref = firebase.database().ref().child("work");
   // Create synced array
@@ -72,4 +72,4 @@ app.controller("workitCtrl", function($scope, $firebaseArray) {
     $('#addWork').modal('close');
   };
 
-});
+}]);
