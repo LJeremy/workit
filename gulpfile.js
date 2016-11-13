@@ -22,12 +22,13 @@ gulp.task('minify', function() {
 
 gulp.task('serve', function() {
   connect.server({
+    root: './',
     livereload: true
   });
 });
 
 gulp.task('watch', function () {
-  gulp.watch('js/*.js', ['minifyjs']);
+  gulp.watch('js/*.js', ['minify']);
 });
 
 gulp.task('default', ['minify', 'serve', 'watch']);

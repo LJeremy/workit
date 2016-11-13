@@ -14,3 +14,8 @@ span.badge {
 .searchBar {
   margin-top: 5%;
 }
+.noHomework {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}

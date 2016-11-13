@@ -1,9 +1,11 @@
 // Cache version
-var CACHE_NAME = 'v0.5';
+var CACHE_NAME = 'v0.6';
 // The files we want to cache
 var urlsToCache = [
   './index.html',
+  './img/sidenav_image_kappa.png',
   './img/sidenav_image.jpg',
+  './img/banner_logo.png',
   './css/materialize.min.css',
   'https://fonts.googleapis.com/icon?family=Material+Icons',
   './dist/scripts.min.js'
