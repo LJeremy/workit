@@ -13,7 +13,7 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
   ]);
 
 // Date
-  var d = new Date();
+  $scope.getDatetime = new Date();
 
   //Array with the names of classes
   $scope.vakken = [
@@ -67,7 +67,7 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
       vak: $scope.vak,
       omschrijving: $scope.omschrijving,
       datum: $scope.datum,
-      created_at: d.getTime()
+      created_at: $scope.getDatetime.getTime()
     });
     $('#addWork').modal('close');
   };
