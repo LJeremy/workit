@@ -72,4 +72,8 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
     $('#addWork').modal('close');
   };
 
+  $scope.removeTask = function (opdracht) {
+    $scope.opdrachten.$remove(opdracht);
+  };
+
 }]);

@@ -82,6 +82,10 @@
                   <div class="chip">
                     {{ opdracht.vak }}
                   </div>
+                  <div ng-show="loggedUser" class="chip red right" ng-click="removeTask(opdracht)">
+                    Delete
+                    <i class="close material-icons">close</i>
+                  </div>
                 </blockquote>
               </div>
             <div class="noHomework" ng-show="!opdrachten.length">
