@@ -12,7 +12,7 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
     }
   ]);
 
-// Date
+  // Date
   $scope.getDatetime = new Date();
 
   //Array with the names of classes
@@ -22,14 +22,16 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
     "Rekenen",
     "Project",
     "Programmeren",
-    "Animatie",
     "Databases",
     "SLB",
     "Burgerschap",
     "Web",
+    "CMS",
     "KD OGD"
   ];
 
+
+  //Login
   $scope.login = function () {
     // Sign in with email.
        firebase.auth().signInWithEmailAndPassword($scope.user.email, $scope.user.password)
@@ -44,6 +46,7 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
        });
      };
 
+  // Sign out
   $scope.signOut = function () {
     firebase.auth().signOut().then(function() {
       // Sign-out successful.
@@ -71,6 +74,7 @@ app.controller("workitCtrl", ["$scope", "$firebaseArray", function($scope, $fire
     });
     $('#addWork').modal('close');
   };
+
 
   $scope.removeTask = function (opdracht) {
     $scope.opdrachten.$remove(opdracht);
